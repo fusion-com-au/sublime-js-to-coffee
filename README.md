@@ -6,7 +6,7 @@ Converts files, selection and clipboard content from Javascript to Coffee using 
 
 ### [Sublime Package Control](http://wbond.net/sublime_packages/package_control)
 
-In the command Pallette choose **Package Control: Install Repository** and select **JS2Coffee**
+In the command Pallette choose **Package Control: Install Repository** and select **JS2Coffee for 2 && 3**
 
 ### Git installation
 
