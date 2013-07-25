@@ -1,14 +1,14 @@
 [
   {
-    "caption": "HTML2Jade: Convert file",
-    "command": "html_to_jade_from_file"
+    "caption": "JS2Coffee: Convert file",
+    "command": "js_to_coffee_from_file"
   },
   {
-    "caption": "HTML2Jade: Convert selection",
-    "command": "html_to_jade_from_selection"
+    "caption": "JS2Coffee: Convert selection",
+    "command": "js_to_coffee_from_selection"
   },
   {
-    "caption": "HTML2Jade: Convert clipboard content",
-    "command": "html_to_jade_from_clipboard"
+    "caption": "JS2Coffee: Convert clipboard content",
+    "command": "js_to_coffee_from_clipboard"
   }
 ]

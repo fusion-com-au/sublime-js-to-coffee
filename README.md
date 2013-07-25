@@ -1,18 +1,18 @@
-# HTML to JADE plugin for Sublime Text 3
+# JS to Coffee plugin for Sublime Text 3
 
-Converts files, selection and clipboard content from HTML to JADE using html2jade
+Converts files, selection and clipboard content from Javascript to Coffee using js2coffee
 
 ## Installation
 
 ### [Sublime Package Control](http://wbond.net/sublime_packages/package_control)
 
-In the command Pallette choose **Package Control: Install Repository** and select **HTML2Jade**
+In the command Pallette choose **Package Control: Install Repository** and select **JS2Coffee**
 
 ### Git installation
 
 Clone the repository in your Sublime Text "Packages" directory:
 
-    git clone https://github.com/anderson916/sublime-html-to-jade.git "HTML2Jade"
+    git clone https://github.com/anderson916/sublime-js-to-coffee.git "JS2Coffee"
 
 The "Packages" directory is located at:
 
@@ -30,16 +30,16 @@ The "Packages" directory is located at:
 
 ## Usage
 
-* **Convert whole HTML file** `Shift+Alt+F` - creates new file in the same folder using the same name as the source ending with '.html'.
-* **Convert selection** `Shift+Alt+S` - replaces selection of HTML with JADE content.
-* **Convert clipboard content** `Shift+Alt+V` - inserts JADE of converted clipboard HTML content.
+* **Convert whole javascript file** `Shift+Alt+F` - creates new file in the same folder using the same name as the source ending with '.js'.
+* **Convert selection** `Shift+Alt+S` - replaces selection of javascript with JADECoffee content.
+* **Convert clipboard content** `Shift+Alt+V` - inserts Coffee of converted clipboard javascript content.
 
 ### In Command Palette:
 
-* **HTML2Jade: Convert file**
-* **HTML2Jade: Convert selection**
-* **HTML2Jade: Convert clipboard content**
+* **JS2Coffee: Convert file**
+* **JS2Coffee: Convert selection**
+* **JS2Coffee: Convert clipboard content**
 
 ## Sublime Text 2
 
-Follow the instruction from [Sublime Text 2 branch](https://github.com/pavelpachkovskij/sublime-html-to-jade/tree/SublimeText2)
+Follow the instruction from [Sublime Text 2 branch](https://github.com/pavelpachkovskij/sublime-js-to-coffee/tree/SublimeText2)

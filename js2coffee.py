@@ -3,15 +3,15 @@ import json
 import sublime, sublime_plugin
 import subprocess
 
-class HtmlToJadeFromFileCommand(sublime_plugin.TextCommand):
+class JsToCoffeeFromFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         source = self.view.file_name()
-        if source.endswith(".html"):
-            target = source + '.jade'
+        if source.endswith(".js"):
+            target = source + '.coffee'
         if target:
             with open(source, 'r') as f:
                 html = f.read()
-            jade = HTHTools.convertHTML2Jade(html)
+            jade = HTHTools.js2coffee(html)
             if jade != None:
                 with open(target, 'w') as f:
                     f.write(jade)
@@ -20,22 +20,22 @@ class HtmlToJadeFromFileCommand(sublime_plugin.TextCommand):
     def is_enabled(self):
         return True #return (self.view.file_name().endswith(".html") or self.view.file_name().endswith(".erb"))
 
-class HtmlToJadeFromSelectionCommand(sublime_plugin.TextCommand):
+class JsToCoffeeFromSelectionCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         for region in self.view.sel():
             if not region.empty():
                 html = self.view.substr(region)
-                jade = HTHTools.convertHTML2Jade(html)
+                jade = HTHTools.js2coffee(html)
                 if jade != None:
                     self.view.replace(edit, region, jade)
 
     def is_enabled(self):
         return True #return self.view.file_name().endswith(".jade")
 
-class HtmlToJadeFromClipboardCommand(sublime_plugin.TextCommand):
+class JsToCoffeeFromClipboardCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         html = sublime.get_clipboard()
-        jade = HTHTools.convertHTML2Jade(html)
+        jade = HTHTools.js2coffee(html)
         if jade != None:
             for region in self.view.sel():
                 self.view.replace(edit, region, jade)
@@ -45,15 +45,15 @@ class HtmlToJadeFromClipboardCommand(sublime_plugin.TextCommand):
 
 class HTHTools:
     @classmethod
-    def convertHTML2Jade(self, contents):
-        html2jade = subprocess.Popen(
-            'html2jade',
+    def js2coffee(self, contents):
+        js2coffee = subprocess.Popen(
+            'js2coffee',
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True
         )
-        output, error = html2jade.communicate(contents.encode())
+        output, error = js2coffee.communicate(contents.encode())
 
         if error:
             self.write_to_console(error)
