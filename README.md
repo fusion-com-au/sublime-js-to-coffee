@@ -42,4 +42,4 @@ The "Packages" directory is located at:
 
 ## Sublime Text 2
 
-Follow the instruction from [Sublime Text 2 branch](https://github.com/pavelpachkovskij/sublime-js-to-coffee/tree/SublimeText2)
+Follow the instruction from [Sublime Text 2 branch](https://github.com/anderson916/sublime-js-to-coffee/tree/SublimeText2)
