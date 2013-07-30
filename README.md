@@ -12,7 +12,7 @@ In the command Pallette choose **Package Control: Install Repository** and selec
 
 Clone the repository in your Sublime Text "Packages" directory:
 
-    git clone https://github.com/anderson916/sublime-js-to-coffee.git "JS2Coffee"
+    git clone https://github.com/anderson916/sublime-js-to-coffee.git "Js2Coffee"
 
 The "Packages" directory is located at:
 
