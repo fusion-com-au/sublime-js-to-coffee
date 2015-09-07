@@ -3,6 +3,24 @@ import json
 import sublime, sublime_plugin
 import subprocess
 
+
+def settings_get(name, default=None):
+    # load up the plugin settings
+    plugin_settings = sublime.load_settings('Js2Coffee.sublime-settings')
+    # project plugin settings? sweet! no project plugin settings? ok, well promote plugin_settings up then
+    if sublime.active_window() and sublime.active_window().active_view():
+        project_settings = sublime.active_window().active_view().settings().get("Js2Coffee")
+    else:
+        project_settings = {}
+
+    # what if this isn't a project?
+    # the project_settings would return None (?)
+    if project_settings is None:
+        project_settings = {}
+
+    setting = project_settings.get(name, plugin_settings.get(name, default))
+    return setting
+
 class JsToCoffeeFromFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         source = self.view.file_name()
@@ -45,13 +63,23 @@ class JsToCoffeeFromClipboardCommand(sublime_plugin.TextCommand):
 
 class HTHTools:
     @classmethod
-    def js2coffee(self, contents):
+    def js2coffee(self, contents, env=None):
+
+        if env is None:
+            env = {"PATH": settings_get('binDir', '/usr/local/bin')}
+
+        # adding custom PATHs from settings
+        customEnv = settings_get('envPATH', "")
+        if customEnv:
+            env["PATH"] = env["PATH"]+":"+customEnv
+
         js2coffee = subprocess.Popen(
             'js2coffee',
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            shell=True
+            shell=True,
+            env=env
         )
         output, error = js2coffee.communicate(contents.encode())
 
@@ -59,6 +87,7 @@ class HTHTools:
             self.write_to_console(error)
             self.window.run_command("show_panel", {"panel": "output.exec"})
             return None
+
         return output.decode()
 
     def write_to_console(self, str):
